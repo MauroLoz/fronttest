@@ -1,0 +1,102 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/css/main.css' %}">
+
+<!-- Enlace a la hoja de estilos de Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+
+<!-- Preconexión con la fuente de Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Enlace a la fuente personalizada Poppins -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">   
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap" rel="stylesheet">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Proyecto Final</title>
+</head>
+
+<body>
+    <!-- Seccion Navbar -->
+<section>
+    <div class="navbar">
+        <div class="container my-3">
+            <div class="primera-seccion d-flex justify-content-center align-items-center" style="width: 20%; text-align: center;" >
+                <!--<a href="/" style="font-size: 24px; text-decoration: none;">Espaci.AR</a>-->
+                {% load static %}
+                <a href=""><img src="{% static 'img/LOGO_ESPACIAR_LETRA_BLANCA-remov.png' %}" alt="My image" style="max-width: 100%; width: 40%;"></a>
+            </div>
+            <div class="segunda-seccion" style="width: 60%;">
+                <div class="contenedor-segunda-seccion">
+                    <a href="#">Inicio</a>
+                    <a href="#">Nuevo Espacio</a>
+                    <a href="#">Mis Reservas</a>
+                    <a href="#">¿Quienes somos?</a>
+                    <a href="#">Contactanos</a>
+                </div>
+            </div>
+            <div class="tercera-seccion d-flex justify-content-center align-items-center" style="width: 20%; text-align: center;">
+                <div class="d-flex justify-content-around align-items-center" style="width: 50%;">
+                {% if user.is_authenticated %}
+                <div class="contenedor-tercera-seccion">
+                    <div class="perfil">
+                        <div class="profile-image">
+                            {% load static %}
+                            <img class="rounded-circle" src="{% static 'img/defaultperfil.jpg' %}" alt="My image" id="profile-img"> 
+                            <div class="dropdown-content" id="dropdown">
+                                <a href="/verperfil" style="font-size: 12px;">Mi Perfil</a>
+                                <a href="/logout" style="font-size: 12px;">Mis Espacios</a>
+                                <a href="/logout" style="font-size: 12px;">Mis Reservas</a>
+                                <a href="/logout" style="font-size: 12px;">Cerrar Sesión</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                    <div class="perfil">
+                        <a class="btn fw-bold" href="/login" style="color: white; font-size: 14px;">Log In</a>
+                    </div>
+                {% endif %}
+                <div class="modo-claro-oscuro tema-claro" id="modo-claro-oscuro">
+                    <div>
+                        <i class="bi bi-sun icon"></i>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="responsive">
+                <i class="bi bi-list"></i><span>Menu</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{% static 'styles/js/main.js' %}"></script>
+
+{% block content %}
+
+{% endblock %}
+
+</body>

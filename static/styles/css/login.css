@@ -1,0 +1,68 @@
+* {
+    font-family: 'Poppins', sans-serif;
+	color: #343a3d;
+}
+
+.content {
+    max-width: 500px;
+}
+
+#loginDiv01 {
+    width: 30%; 
+    background-color: white; 
+    border-radius: 50px;
+    border-width: 1px; 
+    border-style: solid; 
+    border-color: lightgrey;
+}
+
+#botonLogin {
+    background-color: #19BFB7; 
+    color: black; 
+    border: 0;
+    background-color: black !important
+
+}
+
+a {
+    font-size: small;
+}
+
+#loginUsername {
+    border-bottom: 2px solid; 
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-radius: 0;
+}
+
+#loginPassword {
+    border-bottom: 2px solid; 
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-radius: 0;
+    align-items: center;
+}
+
+#loginUsername:focus {
+    outline: 0px;
+
+}
+
+#div01 {
+    border-bottom: 1px solid; 
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-radius: 0;
+    border-color: lightgray;
+}
+
+#loginUsername:focus, #loginUsername:hover{ 
+    box-shadow:none !important;
+}
+
+#loginPassword:focus, #loginPassword:hover{ 
+    box-shadow:none !important;
+}

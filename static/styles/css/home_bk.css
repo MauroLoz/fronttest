@@ -1,0 +1,93 @@
+* {
+    font-family: 'Poppins', sans-serif;
+	color: #343a3d;
+}
+
+.botonFiltro {
+    text-decoration: none;
+    color: #343a3d;
+}
+
+.botonFiltro:focus, .botonFiltro:hover{ 
+    box-shadow:none !important;
+}
+
+.inputFiltro {
+    width: 100%;
+    background-color: white;
+    border: 0px; 
+    font-size: small; 
+    text-align: center; 
+    color: #343a3d;
+}
+
+.divFiltro {
+    width: 100%; 
+    height: 70%; 
+    text-align: center;
+}
+
+.divContenerEspacio {
+    background-color: white; 
+    width: 70%; 
+    height: 300px; 
+    border-radius: 10px; 
+    border-width: 1px; 
+    border-style: solid; 
+    border-color: lightgrey;
+}
+
+.divContenerImg{
+    background-color: white; 
+    width: 25%; 
+    height: 100%; 
+    border-radius: 10px;
+}
+
+.imgEspacio {
+    width: 100%; 
+    height: 100%; 
+    border-radius: 10px;
+}
+
+.divTerceraColumna {
+    background-color: white; 
+    width: 25%; 
+    height: 100%; 
+    border-radius: 10px;
+}
+
+.divBanner {
+    width: 70%; 
+    height: 400px; 
+    border-radius: 10px; 
+    border-width: 1px; 
+    border-style: solid; 
+    border-color: lightgrey;
+}
+
+.pBannerColor {
+    color: #545962
+} 
+
+.spanBannerColor {
+    color: #e6631f;
+}
+
+.claseDivFiltro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+}
+
+.rowFiltros {
+    background-color: #ECFDFB;
+    width: 70%; 
+    height: 100px; 
+    border-radius: 10px; 
+    border-width: 1px; 
+    border-style: solid; 
+    border-color: lightgrey;
+}
+

@@ -1,0 +1,166 @@
+{% extends "layouts/main.html" %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/css/verperfil.css' %}">
+
+<!-- Scripts de funcionamiento -->
+<script src="{% static 'styles/js/verperfil.js' %}"></script>
+
+<div class="mb-5">
+    <div class="container my-5"><h3>Mis datos personales</h3></div>
+    <div class="container" style="display:flex; gap:10px">
+        <div class="d-flex flex-column justify-content-center align-items-center" style="width: 30%;">
+            <div class="foto-perfil d-flex align-items-center justify-content-center" style="height: 100%;">
+                {% load static %}
+                <!-- Imagen cargada desde un archivo estático -->
+                <img class="rounded-circle" src="{% static 'img/defaultperfil.jpg' %}" alt="My image" style="width: 70%;"> 
+            </div>
+        <div class="py-2">
+            <a href="/" style="text-decoration: underline; color: grey">Editar Imagen</a>
+        </div>
+        </div>
+        <div class= "container">
+                <div class="py-2 d-flex pl-4" style="width: 100%;">
+                    <div>
+                        <p style="margin-bottom: 0rem; color: lightgray; font-weight: bold;">Nombre de usuario</p>
+                        <p style="margin-bottom: 0rem; font-size: large;">{{user.username}}</p>
+                    </div>
+                    <div class="d-flex align-items-center" style="margin-left: auto;">
+                        <a href="/" style="text-decoration: underline; color: grey">Editar</a>
+                    </div>
+                </div> 
+                <div class="py-2 d-flex pl-4" style="width: 100%;">
+                    <div>
+                        <p style="margin-bottom: 0rem; color: lightgray; font-weight: bold;">Nombre</p>
+                        <p style="margin-bottom: 0rem; font-size: large;">{{user.first_name}}</p>
+                    </div>
+                    <div class="d-flex align-items-center" style="margin-left: auto;">
+                        <a href="/" style="text-decoration: underline; color: grey">Editar</a>
+                    </div>
+                </div> 
+                <div class="py-2 d-flex pl-4" style="width: 100%;">
+                    <div>
+                        <p style="margin-bottom: 0rem; color: lightgray; font-weight: bold;">Apellido</p>
+                        <p style="margin-bottom: 0rem; font-size: large;">{{user.last_name}}</p>
+                    </div>
+                    <div class="d-flex align-items-center" style="margin-left: auto;">
+                        <a href="/" style="text-decoration: underline; color: grey">Editar</a>
+                    </div>
+                </div> 
+        </div>   
+    </div>
+</div>
+<div class="container py-3">
+    <h4>Mis solicitures en estado pendiente</h4>
+</div>
+{% for p in reservasEnEspera %}
+    <div class="container" style="background-color: #e6ebf0; border-radius: 10px; border:1px solid lightgray; padding: 10px"> 
+        <div class="d-flex">
+            <div style="width: 70%;">
+                <p>En la fecha {{p.created}}</p>
+                <p>El usuario {{p.user}}</p>
+                <p>Desea reservar tu espacio publicado <span class="fw-bold">{{p.post.titulo}}</span></p>
+            </div>
+            <div class="d-flex justify-content-center align-items-center" style="width: 30%;">
+                <form method="POST" action="/cambioEstadoAprobada/">
+                    {% csrf_token %}
+                     <input type="hidden" name="id" value="{{ p.id }}">
+                    <div><button class="btn btn-outline-primary" style="color: green">Aceptar<small class="pl-3 bi bi-check-circle"></small></button></div>
+                </form>
+                <form method="POST" action="/cambioEstadoCancelada/">
+                    {% csrf_token %}
+                     <input type="hidden" name="id" value="{{ p.id }}">
+                     <div class="pl-3"><button class="btn btn-outline-primary">Rechazar<small class="pl-3 bi bi-x-circle"></small></button></div>
+                </form>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center" style="width: 100%;">
+            <button onclick="verDiv('verDiv_{{ forloop.counter }}')" style="color: none; border: none; background-color: #e6ebf0; color: lightgray;">Ver Detalle</button>
+        </div>
+        <div id="verDiv_{{ forloop.counter }}" style="display: none;">
+            <h3>Datos</h3>
+            <div class= "mt-4 px-5" >
+                <ul class="bold-text">
+                    <li>Nombre: {{p.nombre}}</li>
+                    <li>Apellido: {{p.apellido}}</li>
+                    <li>DNI: {{p.dni}}</li>
+                    <li>Numero de Contacto: {{p.nroCelular}}</li>
+                    <li>NroCelular: {{p.nrocelular}}</li>
+                    <li>Tipo de pago: {{p.tipoPago}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br>
+{% endfor %}
+
+<div class="container py-3">
+    <h4>Mis Solicitudes Aprobadas</h4>
+</div>
+
+{% for p in reservasAprobadas %}
+    <div class="container" style="background-color: #e6ebf0; border-radius: 10px; border:1px solid lightgray; padding: 10px"> 
+        <div class="d-flex">
+            <div style="width: 70%;">
+                <p>En la fecha {{p.created}}</p>
+                <p>El usuario {{p.user}}</p>
+                <p>Desea reservar tu espacio publicado <span class="fw-bold">{{p.post.titulo}}</span></p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center" style="width: 100%;">
+            <button onclick="verDiv('verDiv_{{ forloop.counter }}')" style="color: none; border: none; background-color: #e6ebf0; color: lightgray;">Ver Detalle</button>
+        </div>
+        <div id="verDiv_{{ forloop.counter }}" style="display: none;">
+            <h3>Datos</h3>
+            <div class= "mt-4 px-5" >
+                <ul class="bold-text">
+                    <li>Nombre: {{p.nombre}}</li>
+                    <li>Apellido: {{p.apellido}}</li>
+                    <li>DNI: {{p.dni}}</li>
+                    <li>Numero de Contacto: {{p.nroCelular}}</li>
+                    <li>NroCelular: {{p.nrocelular}}</li>
+                    <li>Tipo de pago: {{p.tipoPago}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br>
+{% endfor %}
+
+<div class="container py-3">
+    <h4>Mis solicitudes Canceladas</h4>
+</div>
+{% for p in reservasRechazadas %}
+    <div class="container" style="background-color: #e6ebf0; border-radius: 10px; border:1px solid lightgray; padding: 10px"> 
+        <div class="d-flex">
+            <div style="width: 70%;">
+                <p>En la fecha {{p.created}}</p>
+                <p>El usuario {{p.user}}</p>
+                <p>Desea reservar tu espacio publicado <span class="fw-bold">{{p.post.titulo}}</span></p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center" style="width: 100%;">
+            <button onclick="verDiv('verDiv_{{ forloop.counter }}')" style="color: none; border: none; background-color: #e6ebf0; color: lightgray;">Ver Detalle</button>
+        </div>
+        <div id="verDiv_{{ forloop.counter }}" style="display: none;">
+            <h3>Datos</h3>
+            <div class= "mt-4 px-5" >
+                <ul class="bold-text">
+                    <li>Nombre: {{p.nombre}}</li>
+                    <li>Apellido: {{p.apellido}}</li>
+                    <li>DNI: {{p.dni}}</li>
+                    <li>Numero de Contacto: {{p.nroCelular}}</li>
+                    <li>NroCelular: {{p.nrocelular}}</li>
+                    <li>Tipo de pago: {{p.tipoPago}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br>
+{% endfor %}
+
+</div>
+
+{% endblock %}

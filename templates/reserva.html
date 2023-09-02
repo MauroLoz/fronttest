@@ -1,0 +1,28 @@
+{% extends "layouts/main.html" %}
+
+{% block content %}
+
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/css/reserva.css' %}">
+
+<!-- Agrega el siguiente div para la ventana emergente -->
+<div class="d-flex justify-content-center my-3">
+  <form method="POST" action="">
+    {% csrf_token %}
+
+      <input type="hidden" value="{{espacio.id}}" name="espacio"></input>
+      {{form.nombre}}
+      {{form.apellido}}
+      {{form.dni}}
+      {{form.nroCelular}}
+      {{form.fecha}}
+      {{form.hora}}
+      {{form.tipoPago}}
+
+    <button class="btn btn-primary" type="submit">Reservar</button>
+  </form>
+</div>
+
+
+{% endblock %}

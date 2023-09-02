@@ -1,0 +1,25 @@
+{% extends "layouts/main.html" %}
+<!-- Extiende el archivo "main.html" como plantilla base -->
+
+{% block content %}
+<!-- Bloque de contenido específico para esta plantilla -->
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/css/home.css' %}">
+<!-- Carga los archivos estáticos -->
+
+<div id="calendario"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendario');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                // Configuración del calendario (puedes personalizarlo según tus necesidades)
+                // Aquí puedes agregar eventos para mostrar en el calendario, etc.
+            });
+            calendar.render();
+        });
+    </script>
+
+{% endblock %}
+<!-- Fin del bloque de contenido -->

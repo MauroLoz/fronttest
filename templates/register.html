@@ -1,0 +1,104 @@
+{% extends "layouts/main.html" %}
+<!-- Extiende el archivo "main.html" como plantilla base -->
+
+{% block content %}
+<!-- Bloque de contenido específico para esta plantilla -->
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/css/register.css' %}">
+<!-- Carga del archivo de estilos -->
+
+<div class="mt-5 container">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div id="registerdiv02" class="col-6">
+        <div class="p-5">
+
+          <h2 class="text-center mb-5">Create una cuenta</h2>
+
+          <!-- Formulario para registrar un nuevo usuario -->
+          <form id="registerForm" method="POST" action="">
+            {% csrf_token %}
+
+            <!-- input para Nombre y Apellido del usuario -->
+            <section>
+                  <div class="d-flex">
+                    <div class="form-outline mb-4 mr-2">
+                      <input id="registerNombre" type="text" class="form-control form-control-lg" placeholder="Nombre.." name="name"/>
+                    </div>
+                    <div class="form-outline mb-4 ml-2">
+                      <input id="registerApellido" type="text" class="form-control form-control-lg" placeholder="Apellido.." name="lastname"/>
+                    </div>
+                  </div>
+            </section>
+
+            <!-- input email del usuario -->
+            <section>
+                  <div class="form-outline mb-4">
+                      <input id="registerEmail" type="email" class="form-control form-control-lg" placeholder="Ingrese su email" name="username"/>
+                  </div>
+            </section>
+
+            <!-- input password del usuario -->
+            <section>
+                  <div class="form-outline mb-4">
+                    <input id="registerPassword" type="password" class="form-control form-control-lg" placeholder="Ingrese su contraseña" name="password"/>
+                  </div>
+            </section>
+
+            <!-- input confirmar password del usuario -->
+            <section>
+                  <div class="form-outline mb-4">
+                    <input id="registerContraseñaConfirmar" type="password" class="form-control form-control-lg" placeholder="Repita la contraseña" name="confirm_password"/>
+                  </div>
+            </section>
+
+            <!-- checkbox terminos y condiciones -->
+            <section>
+                  <div class="d-flex justify-content-center mb-5">
+                      <div>
+                        <input id="registerTerminosCondiciones" class="form-check-input me-2" type="checkbox" value="" disabled/>
+                        <label class="form-check-label">
+                            Estoy de acuerdo con los <a href="#!" class="text-body"><u>Terminos y condiciones</u></a>
+                        </label>
+                      </div>
+                  </div>
+            </section>
+
+            <!-- boton registrar usuario nuevo -->
+            <section>
+              <div class="d-flex justify-content-center align-items-center flex-column">
+                <button id="registerButton" type="button" class="btn btn-block btn-lg text-body">Registrarme</button>
+                <a class="mt-3" href="/">Volver</a>
+              </div>
+            </section>
+            
+
+            <!-- redirigir a login -->
+            <section>
+                  <p class="text-center text-muted mt-5 mb-0">Si ya tiene una cuenta, <a href="/login"
+                  class="fw-bold text-body"><u>Ingresa aqui</u></a></p>
+            </section>
+
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+  document.getElementById("registerButton").addEventListener("click", function(event) {
+      // Evitar el envío del formulario por defecto
+      event.preventDefault();
+
+      // Mostrar el cuadro de diálogo de confirmación
+      if (confirm("¿Estás seguro de que deseas registrarte?")) {
+          // Si el usuario confirma, enviar el formulario
+          document.getElementById("registerForm").submit();
+      } else {
+          // Si el usuario cancela, no hacer nada
+          return false;
+      }
+  });
+</script>
+
+{% endblock %}

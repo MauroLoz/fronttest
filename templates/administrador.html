@@ -1,0 +1,52 @@
+{% extends "layouts/main.html" %}
+<!-- Extiende el archivo "main.html" como plantilla base -->
+
+{% block content %}
+<!-- Bloque de contenido específico para esta plantilla -->
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/css/administrador.css' %}">
+<!-- Carga los archivos estáticos -->
+
+{% for p in espaciosEnPausa %}
+    <div class="container" style="background-color: #e6ebf0; border-radius: 10px; border:1px solid lightgray; padding: 10px"> 
+        <div class="d-flex">
+            <div style="width: 70%;">
+                <p>En la fecha {{p.created}}</p>
+                <p>El usuario {{p.user}}</p>
+                <p>Desea reservar tu espacio publicado <span class="fw-bold">{{p.titulo}}</span></p>
+            </div>
+            <div class="d-flex justify-content-center align-items-center" style="width: 30%;">
+                <form method="POST" action="/cambioEspacioAprobado/">
+                    {% csrf_token %}
+                     <input type="hidden" name="id" value="{{ p.id }}">
+                    <div><button class="btn btn-outline-primary" style="color: green">Aceptar<small class="pl-3 bi bi-check-circle"></small></button></div>
+                </form>
+                <form method="POST" action="/cambioEspacioCancelado/">
+                    {% csrf_token %}
+                     <input type="hidden" name="id" value="{{ p.id }}">
+                     <div class="pl-3"><button class="btn btn-outline-primary">Rechazar<small class="pl-3 bi bi-x-circle"></small></button></div>
+                </form>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center" style="width: 100%;">
+            <button onclick="verDiv('verDiv_{{ forloop.counter }}')" style="color: none; border: none; background-color: #e6ebf0; color: lightgray;">Ver Detalle</button>
+        </div>
+        <div id="verDiv_{{ forloop.counter }}" style="display: none;">
+            <h3>Datos</h3>
+            <div class= "mt-4 px-5" >
+                <ul class="bold-text">
+                    <li>Nombre: {{p.nombre}}</li>
+                    <li>Apellido: {{p.apellido}}</li>
+                    <li>DNI: {{p.dni}}</li>
+                    <li>Numero de Contacto: {{p.nroCelular}}</li>
+                    <li>NroCelular: {{p.nrocelular}}</li>
+                    <li>Tipo de pago: {{p.tipoPago}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,197 @@
+{% extends "layouts/main.html" %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/css/verespacio.css' %}">
+
+
+<div class="d-flex justify-content-center my-3 ">
+    <div class="d-flex justify-content-center my-3" style="background-color: #19BFB7; width: 70%; height: 100px; border-radius: 10px; border-width: 1px; border-style: solid; border-color: lightseagreen;">
+        <h3 class="fw-bold" style= "margin-top: 30px;" >{{espacio.titulo}}</h3>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center my-3">
+    <div class="d-flex" style="background-color: #ffffff; width: 70%; height: auto; border-radius: 10px; border-width: 1px; border-style: solid; border-color: lightseagreen;">
+        <div style="width: 40%">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active" style="height: 330px;">
+                    <img class="d-block w-100" src="{{espacio.image1.url}}" alt="First slide">
+                  </div>
+                  <div class="carousel-item" style="height: 330px;">
+                    <img class="d-block w-100" src="{{espacio.image2.url}}" alt="Second slide">
+                  </div>
+                  <div class="carousel-item" style="height: 330px;">
+                    <img class="d-block w-100" src="{{espacio.image3.url}}" alt="Third slide">
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+        </div>
+        <div class="p-3" style="width: 60%; margin-left: 5px;">
+            <div style="font-size: 18px; font-weight: bold;"><p>Acerca del Espacio: </p></div>
+            <p>{{espacio.descripcion}}</p>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center my-3">
+    <div class="d-flex" style="background-color: white; width: 70%; height: 100px; border-radius: 10px; border-width: 1px; border-style: solid; border-color: lightseagreen; height: auto;">
+      <div class="d-flex flex-column p-3">
+        <div class="d-flex" style="font-size: 18px; font-weight: bold;"><p style=" margin-left: 5px;">El Espacio cuenta con las siguientes características:</p></div>
+        <ul style="list-style-type:disc;">
+          <li><p>Superficie: <span>{{espacio.superficie}}</span> m<sup>2</sup></p></li>
+          {% if espacio.baño %}<li><p>Baño</p></li>{% endif %}
+          {% if espacio.estacionamiento %}<li><p>Estacionamiento</p></li>{% endif %}
+          {% if espacio.calefaccion %}<li><p>Calefacción</p></li>{% endif %}
+          {% if espacio.aire %}<li><p>Aire Acondicionado</p></li>{% endif %}
+          {% if espacio.techo %}<li><p>Techo</p></li>{% endif %}
+          {% if espacio.lineaTelefonica %}<li><p>Linea Telefónica</p></li>{% endif %}
+          {% if espacio.agua %}<li><p>Agua</p></li>{% endif %}
+          {% if espacio.wifi %}<li><p>Wifi</p></li>{% endif %}
+          <li><p>Dirección: <span>{{ espacio.direccion }}</span></p></li>
+        </ul>
+      </div>    
+    </div>
+</div>
+
+
+
+
+<div class="d-flex justify-content-center my-3">
+  <a class="btn" href="#" data-toggle="modal" data-target="#registroModal" style="background-color: #19BFB7;">Reservar</a>
+</div>
+
+
+<div class="d-flex justify-content-center my-2">
+  <div class="p-3 d-flex flex-column" style="background-color: white; width: 70%; height: 100px; border-radius: 10px; border-width: 1px; border-style: solid; border-color: lightseagreen; height: auto;">
+      <div>
+        <h2 class="commentTitle p-2">Reseñas</h2>
+      </div>  
+      <div class="d-flex flex-row">
+        <div id="marcador" class="pl-2" style="width: 35%;">
+          <h4>Calificacion del espacio</h4>
+          <div class="d-flex align-items-center">
+            <h1>{{reseña}}</h1>
+            <h2 class="pl-3 bi bi-star"></h2>
+            <h2 class="pl-3 bi bi-star"></h2>
+            <h2 class="pl-3 bi bi-star"></h2>
+            <h2 class="pl-3 bi bi-star"></h2>
+            <h2 class="pl-3 bi bi-star"></h2>
+          </div>
+          <small>{{cantidad}} reseñas</small>
+        </div>
+        <div style="width:65%;">
+          <div class="pl-4 comment p-2">
+            {% for c in espacio.reseñareserva_set.all %}
+                <div id="class1" class="py-4" style="width: 70%;">
+                  <div class="d-flex justify-content-between" style="width: 100%;">
+                    <div class="d-flex align-items-center">
+                      <small>{{c.puntaje}}<small class="pl-2 bi bi-star"></small></small>
+                    </div><small>{{c.user.first_name}} {{c.user.last_name}}</small><small>{{c.created}}</small>
+                  </div>
+                  <div class="mt-2">
+                    <p>{{c.text}}</p>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <div class="circle rounded-circle p-2">
+                      <i class="bi bi-hand-thumbs-up"></i>
+                    </div>
+                    <div class="ml-3 circle rounded-circle p-2">
+                      <i class="bi bi-hand-thumbs-down"></i>
+                    </div>
+                  </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+  
+<div class="d-flex justify-content-center my-3">
+  <div class="d-flex" style="background-color: white; width: 70%; height: 100px; border-radius: 10px; border-width: 1px; border-style: solid; border-color: lightseagreen; height: auto;">
+    <form method="POST" action="/reseña/">
+      {% csrf_token %}
+      <input type="hidden" value="{{espacio.id}}" name="espacio">
+      <div class="form-group my-3">
+          <label> Puntaje: </label>
+          <select name="puntaje">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+          </select>
+      </div>
+      <div class="form-group my-3">
+          <textarea class="form-control" name="text" placeholder="Escribe su reseña."></textarea>
+      </div>
+      <button class="btn btn-primary" type="submit">Enviar comentario</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal fade" id="registroModal" tabindex="-1" role="dialog" aria-labelledby="registroModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registroModalLabel">Reserva del espacio</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="">
+          {% csrf_token %}
+          <div class="d-flex justify-content-center align-items-center" style="width: 100%;">
+            <div style="width: 70%;">
+              <input type='hidden' value="{{espacio.id}}" name="espacio">
+              <div class="d-flex justify-content-between my-3">
+                <div style="width: 48%;">{{form.nombre}}</div>
+                <div style="width: 48%;">{{form.apellido}}</div>
+              </div>
+              <div class="my-3">
+                {{form.dni}}
+              </div>
+              <div class="my-3">
+                {{form.nroCelular}}
+              </div>
+              <div class="my-3">
+                {{form.fecha}}
+              </div>
+              <div class="my-3">
+                {{form.hora}}
+              </div>
+              <div class="my-3">
+                {{form.tipoPago}}
+              </div>
+              <div class="d-flex justify-content-center">
+                <div>
+                  <button class="btn btn-primary" type="submit" style="background-color: #19BFB7;">Reservar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,365 @@
+{% extends "layouts/main.html" %}
+<!-- Extiende el archivo "main.html" como plantilla base -->
+
+{% block content %}
+<!-- Bloque de contenido específico para esta plantilla -->
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/css/home.css' %}">
+<!-- Carga los archivos estáticos -->
+
+<div class="my-4" style="background-color: #F2F4F5">
+    {% if user.is_authenticated %}
+        <p class="d-flex justify-content-end" style="width: 82%;">Bienvenido {{user.first_name}}!</p>
+    {% endif %}
+    <script>
+        function redirectToPage(pageId) {
+          window.location.href = "/espacio/" + pageId;
+        }
+      </script>
+
+    <!-- Seccion Filtros -->
+    <section>
+        <div class="d-flex justify-content-center my-3">
+            <div class="rowFiltros d-flex">
+                
+                <!-- Filtro Yoga -->
+                <div class="claseDivFiltro">
+                    <!-- Formulario -->
+                    <form class="mt-3" method="POST" action="">
+                    {% csrf_token %}
+                    <!-- Botón de envío -->
+                    <button class="botonFiltro btn" type="submit">
+                    <div class="divFiltro">
+                        <div style="width: 100%">
+                            {% load static %}
+                            <!-- Imagen cargada desde un archivo estático -->
+                            <img src="{% static 'img/IcoYoga.png' %}" alt="My image"> 
+                        </div>
+                        <div>
+                            <!-- Campo de entrada con valor predeterminado "Yoga" -->
+                            <input class="inputFiltro" name="tipo" value="Yoga" style="background-color: ECFDFB;"></input> 
+                        </div>  
+                    </div>
+                    </button>
+                    </form>
+                </div>
+    
+                <!-- Filtro Arte -->
+                <div class="claseDivFiltro">
+                    <!-- Formulario -->
+                    <form class="mt-3" method="POST" action="">
+                    {% csrf_token %}
+                    <!-- Botón de envío -->
+                    <button class="botonFiltro btn" type="submit">
+                    <div class="divFiltro">
+                        <div style="width: 100%">
+                            {% load static %}
+                            <!-- Imagen cargada desde un archivo estático -->
+                            <img src="{% static 'img/IcoArte.png' %}" alt="My image"> 
+                        </div>
+                        <div>
+                            <!-- Campo de entrada con valor predeterminado "Yoga" -->
+                            <input class="inputFiltro" name="tipo" value="Arte" style="background-color: ECFDFB;"></input>  
+                        </div>  
+                    </div>
+                    </button>
+                    </form>
+                </div>
+    
+                <!-- Filtro Art.Marcial -->
+                <div class="claseDivFiltro">
+                    <!-- Formulario -->
+                    <form class="mt-3" method="POST" action="">
+                    {% csrf_token %}
+                    <!-- Botón de envío -->
+                    <button class="botonFiltro btn" type="submit">
+                    <div class="divFiltro">
+                        <div style="width: 100%">
+                            {% load static %}
+                            <!-- Imagen cargada desde un archivo estático -->
+                            <img src="{% static 'img/IcoArtMartial.png' %}" alt="My image">
+                        </div>
+                        <div>
+                            <!-- Campo de entrada con valor predeterminado "Yoga" -->
+                            <input class="inputFiltro" name="tipo" value="Art.Marcial" style="background-color: ECFDFB;"></input> 
+                        </div>  
+                    </div>
+                    </button>
+                    </form>
+                </div>
+    
+                <!-- Filtro Cocina -->
+                <div class="claseDivFiltro">
+                    <!-- Formulario -->
+                    <form class="mt-3" method="POST" action="">
+                    {% csrf_token %}
+                    <!-- Botón de envío -->
+                    <button class="botonFiltro btn" type="submit">
+                    <div class="divFiltro">
+                        <div style="width: 100%">
+                            {% load static %}
+                            <!-- Imagen cargada desde un archivo estático -->
+                            <img src="{% static 'img/IcoCook.png' %}" alt="My image">  
+                        </div>
+                        <div>
+                            <!-- Campo de entrada con valor predeterminado "Yoga" -->
+                            <input class="inputFiltro" name="tipo" value="Cocina" style="background-color: ECFDFB;"></input> 
+                        </div>  
+                    </div>
+                    </button>
+                    </form>
+                </div>
+    
+                <!-- Filtro Danza -->
+                <div class="claseDivFiltro">
+                    <!-- Formulario -->
+                    <form class="mt-3" method="POST" action="">
+                    {% csrf_token %}
+                    <!-- Botón de envío -->
+                    <button class="botonFiltro btn" type="submit">
+                    <div class="divFiltro">
+                        <div style="width: 100%">
+                            {% load static %}
+                            <!-- Imagen cargada desde un archivo estático -->
+                            <img src="{% static 'img/IcoDance.png' %}" alt="My image">   
+                        </div>
+                        <div>
+                            <!-- Campo de entrada con valor predeterminado "Yoga" -->
+                            <input class="inputFiltro" name="tipo" value="Danza" style="background-color: ECFDFB;"></input> 
+                        </div>  
+                    </div>
+                    </button>
+                    </form>
+                </div>
+    
+                <!-- Filtro Musica -->
+                <div class="claseDivFiltro">
+                    <!-- Formulario -->
+                    <form class="mt-3" method="POST" action="">
+                    {% csrf_token %}
+                    <!-- Botón de envío -->
+                    <button class="botonFiltro btn" type="submit">
+                    <div class="divFiltro">
+                        <div style="width: 100%">
+                            {% load static %}
+                            <!-- Imagen cargada desde un archivo estático -->
+                            <img src="{% static 'img/IcoGuitar.png' %}" alt="My image">   
+                        </div>
+                        <div>
+                            <!-- Campo de entrada con valor predeterminado "Yoga" -->
+                            <input class="inputFiltro" name="tipo" value="Musica" style="background-color: ECFDFB;"></input> 
+                        </div>  
+                    </div>
+                    </button>
+                    </form>
+                </div>
+    
+                <!-- Filtro Gimnasio -->
+                <div class="claseDivFiltro">
+                    <!-- Formulario -->
+                    <form class="mt-3" method="POST" action="">
+                    {% csrf_token %}
+                    <!-- Botón de envío -->
+                    <button class="botonFiltro btn" type="submit">
+                    <div class="divFiltro">
+                        <div style="width: 100%">
+                            {% load static %}
+                            <!-- Imagen cargada desde un archivo estático -->
+                            <img src="{% static 'img/IcoGym.png' %}" alt="My image">   
+                        </div>
+                        <div>
+                            <!-- Campo de entrada con valor predeterminado "Yoga" -->
+                            <input class="inputFiltro" name="tipo" value="Gimnasio" style="background-color: ECFDFB;"></input> 
+                        </div>  
+                    </div>
+                    </button>
+                    </form>
+                </div>
+    
+                <!-- Filtro Fotografía -->
+                <div class="claseDivFiltro">
+                    <!-- Formulario -->
+                    <form class="mt-3" method="POST" action="">
+                    {% csrf_token %}
+                    <!-- Botón de envío -->
+                    <button class="botonFiltro btn" type="submit">
+                    <div class="divFiltro">
+                        <div style="width: 100%">
+                            {% load static %}
+                            <!-- Imagen cargada desde un archivo estático -->
+                            <img src="{% static 'img/IcoPhoto.png' %}" alt="My image">   
+                        </div>
+                        <div>
+                            <!-- Campo de entrada con valor predeterminado "Yoga" -->
+                            <input class="inputFiltro" name="tipo" value="Fotografía" style="background-color: ECFDFB;"></input> 
+                        </div>  
+                    </div>
+                    </button>
+                    </form>
+                </div>
+    
+                <!-- Filtro Showroom -->
+                <div class="claseDivFiltro">
+                    <!-- Formulario -->
+                    <form class="mt-3" method="POST" action="">
+                    {% csrf_token %}
+                    <!-- Botón de envío -->
+                    <button class="botonFiltro btn" type="submit">
+                    <div class="divFiltro">
+                        <div style="width: 100%">
+                            {% load static %}
+                            <!-- Imagen cargada desde un archivo estático -->
+                            <img src="{% static 'img/IcoShowroom.png' %}" alt="My image">  
+                        </div>
+                        <div>
+                            <!-- Campo de entrada con valor predeterminado "Yoga" -->
+                            <input class="inputFiltro" name="tipo" value="Showroom" style="background-color: ECFDFB;"></input> 
+                        </div>  
+                    </div>
+                    </button>
+                    </form>
+                </div>
+    
+                <!-- Filtro Otros -->
+                <div class="claseDivFiltro">
+                    <!-- Formulario -->
+                    <form class="mt-3" method="POST" action="">
+                    {% csrf_token %}
+                    <!-- Botón de envío -->
+                    <button class="botonFiltro btn" type="submit">
+                    <div class="divFiltro">
+                        <div style="width: 100%">
+                            {% load static %}
+                            <!-- Imagen cargada desde un archivo estático -->
+                            <img src="{% static 'img/IcoOtros2.png' %}" alt="My image">  
+                        </div>
+                        <div>
+                            <!-- Campo de entrada con valor predeterminado "Yoga" -->
+                            <input class="inputFiltro" name="tipo" value="Otros" style="background-color: ECFDFB;"></input> 
+                        </div>  
+                    </div>
+                    </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="mt-5" style="width: 70%;">
+            <h2 style="color: #343a3d; font-weight: bold;">Busca el espacio que se ajuste a tus preferencias</h2>
+        </div>
+    </div>
+
+    <!-- Seccion Espacios -->
+    <section>
+    {% for p in entity %}
+    <!-- Bucle para cada elemento en la lista `entity` -->
+
+    <div class="d-flex justify-content-center my-3">
+        <div class="divContenerEspacio d-flex flex-row" onclick="redirectToPage('{{p.id}}')" style="cursor: pointer;">
+          <div class="divContenerImg">
+            <img class="imgEspacio" src="{{p.image1.url}}" alt="My image">
+          </div>
+          <div style="background-color: white; width: 50%; height: 100%;">
+            <div class="mt-5 ml-5" style="color: #545962;">
+              <h3>{{p.titulo}}</h3>
+              <small>{{p.descripcion}}</small>
+              <small>{{p.id}}</small>
+            </div>
+          </div>
+          <div class="divTerceraColumna">    
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+    <!-- Fin del bucle -->
+    </section>
+
+    <!-- Seccion Paginación -->
+    <section>
+        <div>
+            {% include 'layouts/paginacion.html' %}
+        </div>
+    </section>
+
+    <!-- Seccion Banner -->
+    <section>
+    <div class="d-flex justify-content-center mt-5">
+        <div class="divBanner d-flex flex-row">
+            <div style="width: 55%;">
+                <div class="mt-4">
+                    <h1 class="fw-bold" style="text-align: center; color: #545962;">Compartí tu espacio en 5 pasos.</h1>
+                    <div class="ml-5 mt-5">
+                        <p class='pBannerColor lead fw-bold'><span class="spanBannerColor mr-4">01</span> Ingresa un titulo y descripcion<span class="spanBannerColor">.</span></p> 
+                        <p class='pBannerColor lead fw-bold'><span class="spanBannerColor mr-4">02</span> Sube las imagenes<span class="spanBannerColor">.</span></p> 
+                        <p class='pBannerColor lead fw-bold'><span class="spanBannerColor mr-4">03</span> Configura las caracteristicas<span class="spanBannerColor">.</span></p> 
+                        <p class='pBannerColor lead fw-bold'><span class="spanBannerColor mr-4">04</span> Indique la localizacion del espacio<span class="spanBannerColor">.</span></p> 
+                        <p class='pBannerColor lead fw-bold'><span class="spanBannerColor mr-4">05</span> Personalice su agenda de reserva<span class="spanBannerColor">.</span></p> 
+                    </div>
+                </div>
+            </div>
+            <div style="width: 45%;">
+                {% load static %}
+                <img src="{% static 'img/hombrepc.jpg' %}" alt="My image" style="width: 100%; height: 100%; border-radius: 10px;">
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Seccion Pie de Pagina -->
+    <section >
+    <div class='d-flex pt-5 pb-0'>
+        <div class="container align-self-center mt-5">
+    
+        <div class="row mb-3">
+        <div class="col-4" style="text-align: start">
+        <h5 class='fw-bold mb-3'>Espacios</h5>
+        <ul class='list-unstyled'>
+            <li class='mb-3'><a href="" class='text-dark text-decoration-none'>Espacios Reserva</a></li>
+            <li class='mb-3'><a href="" class='text-dark text-decoration-none'>Agenda</a></li>
+            <li class='mb-3'><a href="" class='text-dark text-decoration-none'>Espacios</a></li>
+        </ul>
+        </div>
+        <div class="col-4" style="text-align: start">
+        <h5 class='fw-bold mb-3'>Contacto</h5>
+        <ul class='list-unstyled'>
+            <li class='mb-3'><a href="" class='text-dark text-decoration-none'>Acerca de nosotros</a></li>
+            <li class='mb-3'><a href="" class='text-dark text-decoration-none'>Formas contacto</a></li>
+            <li class='mb-3'><a href="" class='text-dark text-decoration-none'>Quienes somos</a></li>
+        </ul>
+        </div>
+        <div class="col-4" style="text-align: start">
+        <h5 class='fw-bold mb-3'>Centro de ayuda</h5>
+        <ul class='list-unstyled'>
+            <li class='mb-3'><a href="" class='text-dark text-decoration-none'>Soporte</a></li>
+            <li class='mb-3'><a href="" class='text-dark text-decoration-none'>Ayuda usarios</a></li>
+            <li class='mb-3'><a href="" class='text-dark text-decoration-none'>Terminos y condiciones</a></li>
+        </ul>
+        </div>
+        </div>
+        <div clas='border-top py-4'>
+        <div class="row">
+        <div class="col-6" style="text-align: start">
+            <small>2023 Nombre generico. Todos los derechos reservados</small>
+        </div>
+        <div class="col-6" style="text-align: center">
+            <ul class='list-inline'>
+            <li class="list-inline-item"><a href="#" class='text-dark text-decoration-none'><small>Terminos y condiciones</small></a></li>
+            <li class="list-inline-item"><a href="#" class='text-dark text-decoration-none'><small>Aviso de provacidad</small></a></li>
+            </ul>
+        </div>
+        </div>
+    
+        </div>
+        </div>
+    </div>
+    </section>
+
+</div>
+
+{% endblock %}
+<!-- Fin del bloque de contenido -->

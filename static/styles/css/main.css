@@ -1,0 +1,152 @@
+/* Estilos Generales */
+
+* {
+    font-family: 'Poppins', sans-serif;
+	color: #343a3d;
+}
+
+body {
+    margin: 0;
+}
+
+a {
+    text-decoration: none !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+/* Sección Navbar */ 
+
+.navbar {
+    background-color: rgba(255, 255, 255, 0.7); 
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px; 
+    z-index: 1; 
+    background-color: transparent;
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+}
+
+.primera-seccion {
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    display: flex;
+}
+
+.primera-seccion h4 {
+    font-weight: bold;
+    color: white;
+}
+
+.segunda-seccion {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.segunda-seccion .contenedor-segunda-seccion{
+    justify-content: space-between;
+    width: 40rem;
+    display: flex;
+}
+
+.tercera-seccion {
+    justify-content: end;
+    display: flex;
+    width: 6.5rem;
+}
+
+.tercera-seccion .contenedor-tercera-seccion{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.tercera-seccion .contenedor-tercera-seccion .perfil{
+    background-color: white; 
+    height: 3rem; 
+    width: 3rem; 
+    border-radius: 50px;
+}
+
+.tercera-seccion .contenedor-tercera-seccion .perfil img{
+    width: 100%;
+}
+
+.modo-claro-oscuro {
+    background-color: white; 
+    height: 2.5rem; 
+    width: 2.5rem; 
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.modo-claro-oscuro div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    height: 100%;
+}
+
+.modo-claro-oscuro div i {
+    color: #343a3d; 
+    font-size: 1.4rem;
+}
+
+/* Responsive */ 
+
+.responsive {
+        display: none;
+}
+
+.responsive i {
+        font-size: 30px;
+}
+
+.responsive span {
+        font-size: 25px;
+}
+
+@media screen and (max-width: 1110px) {
+        .segunda-seccion {
+            display: none;
+        }
+
+        .responsive {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+}
+
+/* Estilo del menú desplegable */
+.dropdown-content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+    
+/* Estilo de los enlaces en el menú desplegable */
+.dropdown-content a {
+    padding: 6px 10px;
+    text-decoration: none;
+    display: block;
+    color: black !important;
+}
+    
+/* Estilo de la imagen de perfil como un botón */
+#profile-img {
+    cursor: pointer;
+}
+
+/* Fin Sección Navbar */ 

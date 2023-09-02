@@ -1,0 +1,10 @@
+
+* {
+    font-family: 'Poppins', sans-serif;
+	color: #343a3d;
+}
+
+.container-reservas{
+    background-color: lightgreen;
+    border-radius:10px;
+}

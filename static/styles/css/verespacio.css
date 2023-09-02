@@ -1,0 +1,158 @@
+
+/* Imagen presentacion Pagina */ 
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: lightgray;
+}
+.image-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.85) 10%, transparent 40%); /* Gradiente vertical de oscuro a transparente */
+    z-index: 0; /* Asegura que el gradiente esté detrás del contenido de la imagen */
+}
+
+.image-container img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.6) 100%);
+    filter: blur(4px); 
+}
+
+
+/* Estilos Body */
+
+.content {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px; 
+  }
+
+.img-thumbnail {
+    border-radius: 0px;
+    padding: 0;
+}
+
+/* Estilo Carousel */ 
+
+.carousel-control-next {
+    background-color: black !important;
+    color: black !important;
+  }
+
+  /* Cambia el color de fondo cuando se pasa el mouse sobre la flecha de siguiente */
+.carousel-control-next:hover {
+    background-color: black !important;
+}
+
+/* Estilos Footer */ 
+
+.footer {
+    display: flex;
+    justify-content: center;
+    background-color: #e6e6e6; 
+    width: 100%; 
+    height: 350px; 
+    color: white;
+}
+
+.contenedor-footer-1 {
+    width: 60%;
+}
+
+.contenedor-footer-2 {
+    display: flex;
+    justify-content: space-between;
+    height: 60%; 
+    border-bottom: 1px solid black;
+}
+
+.primeracol-footer {
+    width: 30%; 
+}
+
+.primeracol-footer h4{
+    font-weight: bold;
+}
+
+.segundacol-footer {
+    width: 25%;
+}
+
+.footer-iconos {
+    display: flex;
+}
+
+.contenedor-icono {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #13928c; 
+    width: 2.2rem; 
+    height: 2.2rem; 
+    font-size: 25px; 
+    border-radius: 50px; 
+    margin-right: 0.5rem!important; 
+    color: white;
+}
+
+.contenedor-icono i{
+    font-size: 20px
+}
+
+.terceracol-footer {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+}
+
+.terceracol-footer h4{
+    font-size: 18px; 
+    line-height: 140%; 
+    font-weight: bold; 
+
+}
+
+.terceracol-footer a{
+    font-size: 13px; 
+    font-weight: 700; 
+    line-height: 150%; 
+
+}
+
+.cuartacol-footer {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+}
+
+.cuartacol-footer h4{
+    font-size: 18px; 
+    line-height: 140%; 
+    font-weight: bold; 
+
+}
+
+.cuartacol-footer a{
+    font-size: 13px; 
+    font-weight: 700; 
+    line-height: 150%; 
+
+}
+
+.copyright {
+    margin-top: 1.5rem;
+    height: 20%; 
+    text-align: center; 
+
+}

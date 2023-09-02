@@ -1,0 +1,97 @@
+{% extends "layouts/main.html" %}
+<!-- Extiende el archivo "main.html" como plantilla base -->
+
+{% block content %}
+<!-- Bloque de contenido específico para esta plantilla -->
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/css/login.css' %}">
+<!-- Carga del archivo de estilos -->
+
+<div id="loginDiv01" class="container mt-5 p-5 d-flex justify-content-center">
+  <div style="width: 80%;">
+
+    <!-- Tratado del mensaje de error -->
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <!-- Formulario para el inicio de sesion -->
+    <form method="POST" action="">
+      {% csrf_token %}
+      
+      <!-- Input para el ingreso de email, el mismo es tomado como username -->
+      <section>
+        <div class="form-outline mb-4">
+          <input id='loginUsername' type="email" class="form-control" placeholder="Correo Electronico" name="username"/>
+        </div>
+      </section>
+
+      <!-- Input para el ingreso de password -->
+      <section>
+        <div class="form-outline mb-4">
+          <input id='loginPassword' type="password" class="form-control" placeholder="Contraseña" name="password"/>
+        </div>
+      </section>
+    
+      <!-- Checkbox para recordar la contraseña en el proximo ingreso -->
+      <section>
+        <div class="row mb-4">
+          <div class="col d-flex justify-content-center">   
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="loginRecordar" disabled/>
+              <label class="form-check-label"> Recordarme </label>
+            </div>
+          </div>
+          <div class="col">     
+            <!-- <a href="#">Olvide la contraseña</a> -->
+            <small>Olvide la contraseña</small>
+          </div>
+        </div>
+      </section>
+    
+      <!-- Boton para confirmar el inicio de sesion -->
+      <section>
+        <div style="text-align: center";>
+          <button type="submit" class="btn btn-primary btn-block mb-4" id="botonLogin">Iniciar Sesion</button>
+          <a href="/">Volver</a>
+        </div>
+      </section>
+      
+      <!-- Logueos alternativos -->
+      <section>
+        <div class="text-center mt-4">
+          <div id="div01">
+            <p>No tienes cuenta? <a class="ml-5" href="/register">Registrate</a></p>
+          </div>
+          <div class="mt-3">
+            <p>Puedes logearte utilizando</p>
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="bi bi-facebook"></i>
+            </button>
+        
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="bi bi-google"></i>
+            </button>
+        
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="bi bi-twitter"></i>
+            </button>
+        
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="bi bi-github"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </form>
+    
+  </div>
+</div>
+
+{% endblock %}
