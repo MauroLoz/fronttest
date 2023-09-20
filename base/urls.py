@@ -33,7 +33,10 @@ urlpatterns = [
     path('ver_agenda/<int:espacio_id>/', views.ver_agenda, name='ver_agenda'),
     path('base/', views.base),
     # path('calendar/', views.CalendarView.as_view(), name='calendar'),  # aquí
-    path('calendar/<int:espacio_id>', views.CalendarView.as_view(), name='calendar'),
+    path('calendar/<int:espacio_id>', views.CalendarView.as_view()),
+    path('misEspacios/', views.misEspacios, name='misEspacios'),
+    path('probando/', views.probando),
+
 ]
 
 

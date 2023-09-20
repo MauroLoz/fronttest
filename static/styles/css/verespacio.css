@@ -156,3 +156,42 @@
     text-align: center; 
 
 }
+
+/*** ESTILOS BOTÓN SLIDE TOP ***/
+.ov-btn-slide-top {
+    background: #fff; /* color de fondo */
+    color: #4741d7; /* color de fuente */
+    border: 1px solid black; /* tamaño y color de borde */
+    padding: 10px 10px;
+    border-radius: 3px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+  }
+  .ov-btn-slide-top:hover {
+    color: #fff; /* color de fuente hover */
+  }
+  .ov-btn-slide-top::after {
+    content: "";
+    background: black; /* color de fondo hover */
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: 0;
+    right: 0;
+    top: -100%;
+    bottom: 100%;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+    color: white !important;
+  }
+  .ov-btn-slide-top:hover::after {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+  }

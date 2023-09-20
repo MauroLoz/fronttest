@@ -17,26 +17,27 @@
 <section>
     <div class="image-container" style="position: relative;">
         {% load static %}
-        <img class="cover-image" src="{% static 'img/20230828_010924.png' %}" alt="Test Image">
-        <div class="text-overlay" style="position: absolute; background-color: rgba(0, 0, 0, 0.7); border-radius: 10px;">
-            <h1 style="color: white; font-size: 60px; font-weight: 600;">Encuentra tu espacio para conectar y crecer.</h1>
-            <p style="color: white; font-weight: 700; text-align: center; margin-top: 50;">Explora espacios inspiradores para tus actividades favoritas. ¡Reserva ahora! Lorem ipsum dolor sit amet</p>
+        <div class="text-overlay" style="position: absolute;">
+            <h1 class="p-3" style=" color: #fff;
+            font-size: 90px;
+            margin-bottom: 50px;
+            font-weight: 700;
+            text-transform: uppercase; border: 3px solid white;">Encuentra Tu Espacio Ideal</h1>
+            <p style="color: white; font-weight: 700; text-align: center; margin-top: 50; font-size: 20px;">Reserva un espacio en poco minutos para realizar tu actividad y paga de la forma más cómoda</p>
         </div>
         <div class="button-container" style="position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%);">
-            <button onClick="scrollToContenedor()">Explorar Espacios</button>
+            <a onClick="scrollToContenedor()" class="ov-btn-slide-left" style="cursor: pointer; font-size: 17px;">Explorar Espacios</a>
         </div>
-    </div>
 </section>
-
 
 <!-- Seccion Espacios -->
 <div id="contenedor" class="contenedor tema-claro-bg">
     <!-- Filtros -->
-    <div class="container">
+    <div class="container" style="padding-top: 130px;">
         <div class="seccion-filtros">
-            <h2 id="texto1" class="tema-claro-font">Explore y elija sus espacios ideales para sus actividades</h2>
+            <h2 id="texto1" class="tema-claro-font" style="text-align: center;">Explora y elegí entre diferentes espacios y reserva el que más se ajuste a vos</h2>
             <div class="con-subtexto my-4">
-                <p id="texto2" class="tema-claro-font">En nuestra plataforma, te ofrecemos los espacios perfectos para que puedas perseguir tus pasiones y llevar a cabo tus actividades creativas con éxito</p>
+                <p id="texto2" class="tema-claro-font">Te ofrecemos una diversidad de espacios para reservar y llevar a cabo tus actividades creativas con éxito.</p>
             </div>
         </div>
         <div class="container" style="width: 90%">
@@ -277,6 +278,22 @@
         </div>
     </div>
 
+    <script>
+        // Escucha el evento de cambio de filtro y guarda la posición de desplazamiento
+        document.getElementById('botonFiltro').addEventListener('click', function () {
+            localStorage.setItem('scrollPosition', window.scrollY);
+        });
+    
+        // Restaura la posición de desplazamiento después de la recarga
+        window.onload = function () {
+            var scrollPosition = localStorage.getItem('scrollPosition');
+            if (scrollPosition !== null) {
+                window.scrollTo(0, scrollPosition);
+                localStorage.removeItem('scrollPosition');
+            }
+        };
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $('.owl-carousel').owlCarousel({
@@ -304,8 +321,8 @@
             <h2 id="texto3" class="tema-claro-font">Busca el espacio que se ajuste a tus preferencias</h2>
         </div>
     </div>
-        <div class="container">
-        <div class="row">
+        <div class="container d-flex flex-column justify-content-center align-items-center">
+        <div class="row" style="width: 1200px;">
             {% for p in entity %}
             <!-- Bucle para cada elemento en la lista `entity` -->
             <div class="col-md-4">
@@ -333,7 +350,7 @@
         </div>
         {% if not forloop.last %}
         <!-- Abre una nueva fila (row) si no es la última iteración -->
-        <div class="row">
+        <div class="row" style="width: 1200px;">
         {% endif %}
         {% endif %}
         {% endfor %}

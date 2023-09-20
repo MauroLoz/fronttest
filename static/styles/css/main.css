@@ -3,6 +3,10 @@
 * {
     font-family: 'Poppins', sans-serif;
 	color: #343a3d;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 0;
 }
 
 body {

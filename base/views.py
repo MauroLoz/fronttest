@@ -314,7 +314,7 @@ from .utils import Calendar
 
 class CalendarView(generic.ListView):
     model = Event
-    template_name = 'calendar.html'
+    template_name = 'base.html'
     context_object_name = 'event_list'
 
     def get_queryset(self):
@@ -368,3 +368,14 @@ class CalendarView(generic.ListView):
         context['espacio'] = espacio
 
         return context
+    
+
+def misEspacios(request):
+    user =  request.user
+    espacios = Espacio.objects.filter(user= user.id)
+    context = {'espacios': espacios}
+    return render(request, 'misEspacios.html', context)
+
+
+def probando(request):
+    return render(request, 'probando.html')

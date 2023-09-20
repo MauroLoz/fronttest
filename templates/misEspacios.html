@@ -1,0 +1,106 @@
+{% extends "layouts/main.html" %}
+<!-- Extiende el archivo "main.html" como plantilla base -->
+
+{% block content %}
+<!-- Bloque de contenido específico para esta plantilla -->
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/css/home.css' %}">
+<!-- Carga los archivos estáticos -->
+
+{% include 'alerts.html' %}
+
+<div class="my-4" style="background-color: #F2F4F5">
+    {% if user.is_authenticated %}
+        <p class="d-flex justify-content-end" style="width: 82%;">Bienvenido {{user.first_name}}!</p>
+    {% endif %}
+    <script>
+        function redirectToPage(pageId) {
+          window.location.href = pageId;
+        }
+      </script>
+
+
+    <!-- Seccion Espacios -->
+    <section>
+      {% for espacio in espacios %}
+    
+
+      <div class="d-flex justify-content-center my-3" style="position: relative;">
+          <div class="divContenerEspacio d-flex flex-row" style="cursor: pointer;">
+            <div class="divContenerImg">
+              <img class="imgEspacio" src="{{espacio.image1.url}}" alt="My image">
+            </div>
+            <div style="background-color: white; width: 50%; height: 100%;">
+              <div class="mt-5 ml-5" style="color: #545962;">
+                <h3>{{espacio.titulo}}</h3>
+                <small>{{espacio.descripcion}}</small>
+                
+                <small>{{espacio.id}}</small>
+                <a><strong>{{espacio.estado}}</strong></a>
+                
+                
+              </div>
+            </div>
+            <div class="divTerceraColumna">
+              {% if espacio.estado == "Publicado" %}
+                <form method="POST" action="{% url 'cambiarEstadoEspacioUsuario' estado='Pausado' %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="id" value="{{ espacio.id }}">
+                </form>
+              {% endif %}
+  
+              {% if espacio.estado == "Pausado" %}
+                <form method="POST" action="{% url 'cambiarEstadoEspacioUsuario' estado='En espera de Aprobación' %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="id" value="{{ espacio.id }}">
+                </form>
+              {% endif %}
+  
+            </div>
+            <div class="divEliminar" style="display: flex; flex-direction: column;">
+              <form id="eliminarForm-{{espacio.id}}" method="POST" action= "{% url 'eliminarEspacio' %}">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{ espacio.id }}">
+                <button id="eliminarButton-{{espacio.id}}" class="btn btn-outline-primary">Eliminar espacio<small class="pl-3 bi"></small></button>
+              </form>
+              <div style="margin-bottom: 10px"></div>
+              <form method="POST" action="{% url 'cambiarEstadoEspacioUsuario' estado='Pausado' %}">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{ espacio.id }}">
+                <button class="btn btn-outline-primary">Pausar<small class="pl-3 bi"></small></button>
+              </form>
+              <div style="margin-bottom: 10px"></div>
+              <form method="POST" action="{% url 'cambiarEstadoEspacioUsuario' estado='En espera de Aprobación' %}">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{ espacio.id }}">
+                <button class="btn btn-outline-primary">Publicar<small class="pl-3 bi"></small></button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      <script>
+        document.getElementById("eliminarButton-{{espacio.id}}").addEventListener("click", function(event) {
+            // Evitar el envío del formulario por defecto
+            event.preventDefault();
+      
+            // Mostrar el cuadro de diálogo de confirmación
+            if (confirm("¿Estás seguro de que deseas eliminar el espacio? No figurará más en nuestra página!")) {
+                // Si el usuario confirma, enviar el formulario
+                document.getElementById("eliminarForm-{{espacio.id}}").submit();
+            } else {
+                // Si el usuario cancela, no hacer nada
+                return false;
+            }
+        });
+      </script>
+
+    {% endfor %}
+    <!-- Fin del bucle -->
+    </section>
+
+</div>
+
+{% endblock %}
+<!-- Fin del bloque de contenido -->

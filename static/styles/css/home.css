@@ -94,6 +94,7 @@ a {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    background-color: #13928c;
 }
 
 /* Fin Sección Imagen Presentacion */ 
@@ -493,11 +494,11 @@ a {
 }
 
 .tema-claro-font {
-    color:black;
+    color:black !important;
 }
 
 .tema-oscuro-font {
-    color:white;
+    color:white !important;
 }
 
 .owl-carousel .owl-item img {
@@ -518,7 +519,7 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.85) 10%, transparent 40%); /* Gradiente vertical de oscuro a transparente */
+    background: linear-gradient(rgba(0, 0, 0, 0.80) 15%, transparent 50%); /* Gradiente vertical de oscuro a transparente */
     z-index: 0; /* Asegura que el gradiente esté detrás del contenido de la imagen */
 }
 
@@ -532,7 +533,7 @@ background: linear-gradient(to bottom, rgba(255, 0, 0, 0.6) 50%, rgba(255, 0, 0,
 
 .text-overlay {
     position: absolute;
-    padding: 20px;
+    padding: 15px;
 }
 
 .button-container {
@@ -582,3 +583,41 @@ button {
 .botonFiltro:focus, .botonFiltro:hover{ 
     box-shadow:none !important;
 }
+
+/*** ESTILOS BOTÓN SLIDE LEFT ***/
+.ov-btn-slide-left {
+    background: white; /* color de fondo */
+    color: #13928c !important; /* color de fuente */
+    border: 2px solid black; /* tamaño y color de borde */
+    padding: 16px 20px;
+    border-radius: 3px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+  }
+  .ov-btn-slide-left:hover {
+    color: #13928c; /* color de fuente hover */
+  }
+  .ov-btn-slide-left::after {
+    content: "";
+    background: black; /* color de fondo hover */
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    right: 100%;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+  }
+  .ov-btn-slide-left:hover::after {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+  }

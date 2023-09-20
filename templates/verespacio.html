@@ -1,6 +1,5 @@
 {% extends "layouts/main.html" %}
 <!-- Extiende el archivo "main.html" como plantilla base -->
-
 {% block content %}
 
 {% load static %}
@@ -14,7 +13,7 @@
     </div>
 </div>
 
-<div class="container my-5 d-flex flex-column justify-content-center content" style="background-color: white; width: 900px; height: 850px;">
+<div class="container my-5 d-flex flex-column justify-content-center content" style="background-color: white; width: 900px; height: 950px;">
 
     <div class="d-flex justify-content-between">
       <div style="width: 63%;">
@@ -171,7 +170,7 @@
             
               <small>Cantidad:</small>
               <small>Precio:</small>
-              <small>Metros cuadrados:</small>
+              <small>M/cuadrados:</small>
               <small>item4:</small>
               <small>item5:</small>
               <small>item6:</small>
@@ -223,8 +222,8 @@
         <h4 style="font-weight: 600; line-height: 1.2; font-size: 20px;">Acerca del espacio</h4>
         <p style="font-size: 10px; line-height: 1.8; color: #838383;">{{espacio.descripcion}}</p>
       </div>
-      <div>
-        <a class="btn" href="/" style="color: black !important;">Reservar</a>
+      <div class="d-flex justify-content-center align-items-center">
+        <a class="btn" data-toggle="modal" data-target="#registroModal" href="#" style="color: black !important;">Reservar</a>
         <a class="btn" onclick="redirectToPage('{{espacio.id}}')" style="color: black !important;">Agenda</a>
       </div>
     </div>
@@ -234,7 +233,7 @@
         window.location.href = "/calendar/" + pageId;
       }
     </script>
-
+  
     <div id="footer" class="footer tema-claro-bg">
         <div class="contenedor-footer-1">
             <div class="contenedor-footer-2 mt-5">
@@ -283,11 +282,177 @@
             </div>
         </div>
       </div>
+
+      <div class="modal fade" id="registroModal" tabindex="-1" role="dialog" aria-labelledby="registroModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="max-width: 1000px;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="registroModalLabel">Reserva del espacio</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form method="POST" action="">
+                {% csrf_token %}
+                <div class="d-flex justify-content-center align-items-center" style="width: 100%;">
+                  <div style="width: 50%;">
+                    <div class="d-flex justify-content-center align-items-center" style="width: 100%;">
+                      <div style="width: 70%;">
+                        <input type='hidden' value="{{espacio.id}}" name="espacio">
+                        <div class="d-flex justify-content-between my-3">
+                          <div style="width: 48%;">{{form.nombre}}</div>
+                          <div style="width: 48%;">{{form.apellido}}</div>
+                        </div>
+                        <div class="my-3">
+                          {{form.dni}}
+                        </div>
+                        <div class="my-3">
+                          {{form.nroCelular}}
+                        </div>
+                        <div class="my-3">
+                          {{form.fecha}}
+                        </div>
+                        <div class="my-3">
+                          {{form.hora}}
+                        </div>
+                        <div class="my-3">
+                          {{form.tipoPago}}
+                        </div>
+                        <div class="d-flex justify-content-center">
+                          <div>
+                            <button class="btn btn-primary" type="submit" style="background-color: #19BFB7;">Reservar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="width: 50%;">
+                    {% load static %}
+                    <link rel="stylesheet" type="text/css" href="{% static 'styles/css/probando.css' %}">
+
+                    <div class="container2">
+                      <div class="calendar">
+                        <div class="front">
+                          <div class="current-date">
+                            <h1>Martes 5th</h1>
+                            <h1>Septiembre 2023</h1> 
+                          </div>
+                  
+                          <div class="current-month">
+                            <ul class="week-days">
+                              <li>LUN</li>
+                              <li>MAR</li>
+                              <li>MIE</li>
+                              <li>JUE</li>
+                              <li>VIE</li>
+                              <li>SAB</li>
+                              <li>DOM</li>
+                            </ul>
+                  
+                            <div class="weeks">
+                              <div class="first">
+                                <span class="last-month">28</span>
+                                <span class="last-month">29</span>
+                                <span class="last-month">30</span>
+                                <span class="last-month">31</span>
+                                <span>01</span>
+                                <span>02</span>
+                                <span>03</span>
+                              </div>
+                  
+                              <div class="second">
+                                <span>04</span>
+                                <span>05</span>
+                                <span class="event">06</span>
+                                <span>07</span>
+                                <span>08</span>
+                                <span>09</span>
+                                <span>10</span>
+                              </div>
+                  
+                              <div class="third">
+                                <span>11</span>
+                                <span>12</span>
+                                <span>13</span>
+                                <span>14</span>
+                                <span class="active">15</span>
+                                <span>16</span>
+                                <span>17</span>
+                              </div>
+                  
+                              <div class="fourth">
+                                <span>18</span>
+                                <span>19</span>
+                                <span>20</span>
+                                <span>21</span>
+                                <span>22</span>
+                                <span>23</span>
+                                <span>24</span>
+                              </div>
+                  
+                              <div class="fifth">
+                                <span>25</span>
+                                <span>26</span>
+                                <span>27</span>
+                                <span>28</span>
+                                <span>29</span>
+                                <span>30</span>
+                                <span>31</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                  
+                        <div class="back">
+                          <input placeholder="What's the event?">
+                          <div class="info">
+                            <div class="date">
+                              <p class="info-date">
+                              Date: <span>Jan 15th, 2016</span>
+                              </p>
+                              <p class="info-time">
+                                Time: <span>6:35 PM</span>
+                              </p>
+                            </div>
+                            <div class="address">
+                              <p>
+                                Address: <span>129 W 81st St, New York, NY</span>
+                              </p>
+                            </div>
+                            <div class="observations">
+                              <p>
+                                Observations: <span>Be there 15 minutes earlier</span>
+                              </p>
+                            </div>
+                          </div>
+                  
+                          <div class="actions">
+                            <button class="save">
+                              Save <i class="ion-checkmark"></i>
+                            </button>
+                            <button class="dismiss">
+                              Dismiss <i class="ion-android-close"></i>
+                            </button>
+                          </div>
+                        </div>
+                  
+                      </div>
+                    </div>
+                  
+                  
+                  
+                  </div>
+                </div>
+          
+                <div>
       
+                </div>
+              </form>
+          </div>
+        </div>
+      </div>
+
       
-      <!-- Agrega los enlaces a los scripts de Bootstrap -->
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 {% endblock %}

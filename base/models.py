@@ -125,8 +125,6 @@ class Disponibilidad(models.Model):
     hora_fin = models.TimeField()
 
 class Event(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.TextField()
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     espacio = models.ForeignKey(Espacio, on_delete=models.CASCADE)

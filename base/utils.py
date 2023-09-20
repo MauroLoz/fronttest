@@ -18,7 +18,7 @@ class Calendar(HTMLCalendar):
 
         for event in events_per_day:
             cell_class = 'event-day' if event.start_time.day <= day <= event.end_time.day else ''
-            d += f'<li class="{cell_class}"> {event.title} </li>'
+            d += f'<li class="{cell_class}"> </li>'
 
             if event:
                 cell_class = 'event-day-yes'
